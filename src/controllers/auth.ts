@@ -82,10 +82,11 @@ export const login = async (req: Request, res: Response) => {
       return res.status(401).json("Password is Incorrect");
     }
 
-    if (!user[0].isactive) {
-      responseStatus.setError(400, "Please confirm your email");
-      return responseStatus.send(res);
-    }
+    // if (!user[0].isactive) {
+    //   responseStatus.setError(400, "Please confirm your email");
+    //   return responseStatus.send(res);
+    // }
+    
     return await generateToken(200, res, {id: user[0].id, email: user[0].email, name: user[0].name });
 
     // responseStatus.setSuccess(201, "Successfully logged in", {

@@ -3,7 +3,7 @@ import express, {Request, Response, NextFunction} from 'express';
 import path from 'path'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
-
+import userRouter from './routes/users'
 import indexRouter from './routes/index'
 import { testConnection } from './db-config/postgres-connection';
 
@@ -22,6 +22,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/users', userRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req: Request, res: Response, next: NextFunction) {
