@@ -8,6 +8,9 @@ import dotenv from "dotenv";
 import indexRouter from "./routes/index";
 import usersRouter from "./routes/users";
 
+import { testConnection } from './db-config/postgres-connection'
+
+testConnection()
 
 dotenv.config();
 
