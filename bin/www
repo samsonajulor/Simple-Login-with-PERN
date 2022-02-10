@@ -3,16 +3,17 @@
 /**
  * Module dependencies.
  */
-
-var app = require('../dist/app').default;
-var debug = require('debug')('postgres-project:server');
+require('dotenv').config()
+var app = require('../dist/app')
+var debug = require('debug')('twitt:server');
 var http = require('http');
+// var { testConnection } = require('../src/db-config/postgres-connection.ts')
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '3200');
 app.set('port', port);
 
 /**
@@ -20,14 +21,14 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
-
+// testConnection()
 /**
  * Listen on provided port, on all network interfaces.
  */
 
 server.listen(port, () => {
-  console.log(`Server is listening on port ${port}`)
-});
+  console.log(`Server running on port ${port}`);
+})
 server.on('error', onError);
 server.on('listening', onListening);
 
