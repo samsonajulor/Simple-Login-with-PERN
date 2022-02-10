@@ -6,6 +6,7 @@ import logger from 'morgan'
 import userRouter from './routes/users'
 import indexRouter from './routes/index'
 import { testConnection } from './db-config/postgres-connection';
+import cors from 'cors'
 
 testConnection()
 
@@ -15,6 +16,13 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.use(
+  cors({
+    origin: 'https://login-with-pern.herokuapp.com',
+    methods: 'GET,POST,PUT,DELETE',
+    credentials: true,
+  })
+)
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
