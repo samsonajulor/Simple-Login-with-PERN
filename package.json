@@ -1,17 +1,17 @@
 {
-  "name": "postgres-project",
+  "name": "twitt",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "concurrently \"tsc -w\" \"nodemon ./bin/www\"",
+    "dev": "nodemon ./bin/www",
     "migrate": "ts-node node_modules/.bin/node-pg-migrate --no-reject-unauthorized -j ts -m ./src/migrations",
     "create-tables": "yarn migrate up",
     "delete-tables": "yarn migrate down",
     "build": "tsc",
     "test": "jest",
     "compile": "yarn tsc -w",
-    "create-user": "yarn migrate create twitter",
+    "create-user": "yarn migrate create loginpern",
     "clean": "rm -rf dist && mkdir dist",
     "heroku-postbuild": "yarn clean && yarn build"
   },
@@ -24,7 +24,6 @@
     "@types/morgan": "^1.9.3",
     "@types/uuid": "^8.3.3",
     "bcrypt": "^5.0.1",
-    "concurrently": "^7.0.0",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "db-migrate": "^0.11.13",
