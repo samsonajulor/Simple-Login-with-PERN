@@ -4,6 +4,7 @@ import path from 'path'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 import userRouter from './routes/users'
+import indexRouter from './routes/index'
 import { testConnection } from './db-config/postgres-connection';
 import cors from 'cors'
 
@@ -24,8 +25,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
+
+// app.use('/', indexRouter);
 app.use('/users', userRouter);
+app.use('/', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 
 // catch 404 and forward to error handler
 app.use(function(req: Request, res: Response, next: NextFunction) {
