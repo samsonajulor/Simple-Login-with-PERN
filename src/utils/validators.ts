@@ -38,24 +38,3 @@ export const loginValidator = (email: string, password: string) => {
   };
 };
 
-export const twitValidate = (
-  tweet_body: string,
-  image: string,
-  who_can_reply: string
-) => {
-  const errors: AuthErrors = {};
-
-  if (tweet_body.trim() === "" && image.trim() === "") {
-    errors.tweetBody = "Your tweet body can not be empty";
-  }
-  if (tweet_body.trim().length > 240) {
-    errors.tweetBody = "words must not be more than 250 characters";
-  }
-  if (who_can_reply.trim() === "") {
-    errors.whoCanReply = "who can reply must be specified";
-  }
-  return {
-    errors,
-    valid: Object.keys(errors).length < 1,
-  };
-};
