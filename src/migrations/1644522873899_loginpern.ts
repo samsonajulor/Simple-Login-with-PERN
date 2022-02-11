@@ -11,7 +11,11 @@ export async function up(pgm: MigrationBuilder): Promise<void> {
       primaryKey: true,
       default: pgm.func('uuid_generate_v4()'),
     },
-    name: {
+    firstname: {
+      type: 'TEXT',
+      notNull: true,
+    },
+    lastname: {
       type: 'TEXT',
       notNull: true,
     },
@@ -23,9 +27,6 @@ export async function up(pgm: MigrationBuilder): Promise<void> {
     password: {
       type: 'TEXT',
       notNull: true,
-    },
-    isactive: {
-      type: 'TEXT',
     },
     date_created: {
       type: 'timestamp',

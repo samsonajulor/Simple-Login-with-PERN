@@ -1,0 +1,142 @@
+openapi: 3.0.0
+info:
+  title: Login-With-Pern
+  contact: {}
+  version: '1.0'
+servers:
+  - url: https://login-with-pern.herokuapp.com
+    variables: {}
+  - url: http://localhost:3200
+    variables: {}
+paths:
+  /users:
+    post:
+      tags:
+        - Login
+      summary: register
+      description: Users can register with their email, firstname, lastname and password. Email has to be unique
+      operationId: register
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/registerrequest'
+            example:
+              firstname: ajulor
+              lastname: samson
+              email: samson1255678@gmail.com
+              password: '123456'
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: https://login-with-pern.herokuapp.com
+          variables: {}
+  /users/login:
+    post:
+      tags:
+        - Login
+      summary: login
+      description: Users can login with their email and password
+      operationId: login
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/loginrequest'
+            example:
+              email: samson1255678@gmail.com
+              password: '123456'
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: https://login-with-pern.herokuapp.com
+          variables: {}
+components:
+  schemas:
+    registerrequest:
+      title: registerrequest
+      required:
+        - firstname
+        - lastname
+        - email
+        - password
+      type: object
+      properties:
+        firstname:
+          type: string
+        lastname:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        firstname: ajulor
+        lastname: samson
+        email: samson1255678@gmail.com
+        password: '123456'
+    registerHerokuRequest:
+      title: registerHerokuRequest
+      required:
+        - firstname
+        - lastname
+        - email
+        - password
+      type: object
+      properties:
+        firstname:
+          type: string
+        lastname:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        firstname: Samson
+        lastname: Ajulor
+        email: samson12556738@gmail.com
+        password: '123456'
+    loginrequest:
+      title: loginrequest
+      required:
+        - email
+        - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: samson1255678@gmail.com
+        password: '123456'
+    loginHerokuRequest:
+      title: loginHerokuRequest
+      required:
+        - email
+        - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: samson1255678@gmail.com
+        password: '123456'
+tags:
+  - name: Login
+    description: ''
