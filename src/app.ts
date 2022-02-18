@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 import userRouter from './routes/users'
 import indexRouter from './routes/index'
-import { testConnection } from './db-config/postgres-connection';
+// import { testConnection } from './db-config/postgres-connection';
 import cors from 'cors'
 
 //documentation rendering
@@ -13,7 +13,7 @@ import swaggerUI from 'swagger-ui-express'
 import YAML from 'yamljs'
 const swaggerDocument = YAML.load('document.yaml')
 
-testConnection()
+// testConnection()
 
 const app = express();
 

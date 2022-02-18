@@ -3,6 +3,10 @@ const app= require('../app')
 
 let token: string
 
+beforeAll(() => {
+ //connection to the test db
+})
+
 describe("Auth", () => {
  const data = {
    firstname: 'Sam',
